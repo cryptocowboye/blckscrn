@@ -1,0 +1,13 @@
+* {
+    margin: 0px;
+}
+
+.blackscreen-main {
+    background-color: black;
+    height: 125dvh;
+}
+
+h1, p {
+    color: white;
+    text-align: center;
+}
