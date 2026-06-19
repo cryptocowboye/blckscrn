@@ -2,12 +2,32 @@
     margin: 0px;
 }
 
-.blackscreen-main {
+.blackscreen-header {
     background-color: black;
-    height: 125dvh;
 }
 
-h1, p {
+.blackscreen-h1, .blackscreen-nav {
+    color: white;
+    text-align: center;
+}
+
+.blackscreen-main {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    height: 125dvh;
+    justify-content: center;
+    align-items: center;
+}
+
+.unselectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h2, p {
     color: white;
     text-align: center;
 }
