@@ -1,3 +1,21 @@
+function navBarFunctionality() {
+    const trig = document.querySelector('#header-trigger');
+    const header = document.querySelector('#blackscreen-header');
+    const nav = document.querySelector("#blackscreen-nav");
+
+    trig.addEventListener('mouseenter', () => {
+        header.classList.remove('hidden');
+        header.classList.add('visible');
+
+        nav.style.visibility = 'visible';
+    });
+
+    trig.addEventListener('mouseleave', () => {
+        header.classList.remove('visible');
+        header.classList.add('hidden');
+    })
+}
+
 async function wakeLockFunctionality() {
 
     try {
@@ -40,3 +58,4 @@ let wakeLock = null;
 fullScreen();
 wakeLockFunctionality();
 reapplyWakelock();
+navBarFunctionality();
