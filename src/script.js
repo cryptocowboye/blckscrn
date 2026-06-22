@@ -53,9 +53,16 @@ function fullScreen() {
     })
 }
 
-let wakeLock = null;
 
-fullScreen();
-wakeLockFunctionality();
-reapplyWakelock();
-navBarFunctionality();
+
+export default {
+  async fetch(request, env, ctx) {
+    let wakeLock = null;
+
+    fullScreen();
+    wakeLockFunctionality();
+    reapplyWakelock();
+    navBarFunctionality();
+    return new Response("JavaScript executed successfully!");
+  }
+};
