@@ -16,6 +16,15 @@
     align-items: center;
 }
 
+#pomodoro-main {
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+}
+
 .unselectable {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -26,6 +35,11 @@
 .blackscreen-nav-link {
     text-decoration: none;
     color: white;
+}
+
+.pomodoro-nav-link {
+    text-decoration: none;
+    margin: 0px 1rem;
 }
 
 /* invisible header */
@@ -49,6 +63,15 @@
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
+#pomodoro-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    height: 80px;
+}
+
 #blackscreen-header.hidden {
   transform: translateY(-100%);
   opacity: 0;
@@ -60,7 +83,7 @@
 }
 /* invisible header */
 
-h2, p {
+.blackscreen-h2, .blackscreem-p {
     color: white;
     text-align: center;
 }
