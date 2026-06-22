@@ -55,14 +55,10 @@ function fullScreen() {
 
 
 
-export default {
-  async fetch(request, env, ctx) {
-    let wakeLock = null;
 
-    fullScreen();
-    wakeLockFunctionality();
-    reapplyWakelock();
-    navBarFunctionality();
-    return new Response("JavaScript executed successfully!");
-  }
-};
+let wakeLock = null;
+
+fullScreen();
+wakeLockFunctionality();
+reapplyWakelock();
+navBarFunctionality();
