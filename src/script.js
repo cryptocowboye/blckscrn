@@ -53,6 +53,9 @@ function fullScreen() {
     })
 }
 
+
+
+
 let wakeLock = null;
 
 fullScreen();
