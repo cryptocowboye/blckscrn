@@ -14,24 +14,47 @@ class Pomodoro {
         return this.cycles;
     }
 
-    startPomodoro() {
+    startTimer(mins=25) {
         const [startBtn, pauseBtn, resetBtn] = [document.querySelector("#startBtn"), document.querySelector("#pauseBtn"), document.querySelector("#resetBtn")];
 
-        this.timer.addEventListener('secondsUpdated', () => {
-            document.getElementById('test').innerText = this.timer.getTimeValues().toString();
-        })
+        const tmrInit = () => {
+            document.getElementById('test').innerText = this.timer.getTimeValues().toString(['minutes', 'seconds']);
+        }
 
-        startBtn.addEventListener('click', () => {
-            this.timer.start({ countdown: true, startValues: { seconds: 25 * 60 } });
-        })
+        const strtFunc = () => {
+            this.timer.start({ countdown: true, startValues: { seconds: mins * 60 } });
+        }
 
-        pauseBtn.addEventListener('click', () => {
+        const psFunc = () => {
             this.timer.pause();
-        })
+        }
 
-        resetBtn.addEventListener('click', () => {
+        const rstFunc = () => {
             this.timer.reset();
-        })
+            this.timer.pause();
+            document.getElementById('test').innerText = `${this.timer.getTimeValues().toString(['minutes', 'seconds'])}`;
+        }
+
+        this.timer.addEventListener('secondsUpdated', tmrInit)
+
+        startBtn.addEventListener('click', strtFunc)
+
+        pauseBtn.addEventListener('click', psFunc)
+
+        resetBtn.addEventListener('click', rstFunc)
+
+        this.timer.addEventListener('targetAchieved', () => {
+            this.timer.removeEventListener('secondsUpdated', tmrInit)
+            startBtn.removeEventListener('click', strtFunc);
+            pauseBtn.removeEventListener('click', psFunc);
+            resetBtn.removeEventListener('click', rstFunc);
+        }, { once: true })
+
+
+    }
+
+    startPomodoro() {
+        this.startTimer(25);
     }
 }
 
