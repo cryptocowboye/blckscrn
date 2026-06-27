@@ -1,68 +1,67 @@
 import { Timer } from 'easytimer.js';
 
 class Pomodoro {
-    constructor() {
-        this.timer = new Timer();
+    constructor(mins) {
+        this.timer = new Timer({ countdown: true, startValues: { seconds: mins * 60 } });
+        this.break = new Timer({ countdown: true, startValues: { seconds: (mins / 5) * 60 } });
+        
+        this.currentTimer = this.timer; 
         this.cycles = 0;
+
+        this.playBtn = document.querySelector("#startBtn");
+        this.pauseBtn = document.querySelector("#pauseBtn");
+        this.resetBtn = document.querySelector("#resetBtn");
+        this.display = document.getElementById('test');
+
+        this.setupTimerEvents(this.timer, 'timer');
+        this.setupTimerEvents(this.break, 'break');
+        this.setupButtonListeners();
+
+        this.updateDisplay();
     }
 
-    getTime() {
-        return this.timer;
+    updateDisplay() {
+        this.display.innerText = this.currentTimer.getTimeValues().toString(['minutes', 'seconds']);
     }
 
-    getCycle() {
-        return this.cycles;
+    setupTimerEvents(timerInstance, type) {
+        timerInstance.addEventListener('secondsUpdated', () => {
+            if (this.currentTimer === timerInstance) this.updateDisplay();
+        });
+
+        timerInstance.addEventListener('targetAchieved', () => {
+            timerInstance.reset();
+            timerInstance.pause();
+            
+            if (type === 'timer') {
+                this.currentTimer = this.break;
+                this.cycles++;
+            } else {
+                this.currentTimer = this.timer;
+            }
+            
+            this.updateDisplay();
+        });
     }
 
-    startTimer(mins=25) {
-        const [startBtn, pauseBtn, resetBtn] = [document.querySelector("#startBtn"), document.querySelector("#pauseBtn"), document.querySelector("#resetBtn")];
-
-        const tmrInit = () => {
-            document.getElementById('test').innerText = this.timer.getTimeValues().toString(['minutes', 'seconds']);
-        }
-
-        const strtFunc = () => {
-            this.timer.start({ countdown: true, startValues: { seconds: mins * 60 } });
-        }
-
-        const psFunc = () => {
-            this.timer.pause();
-        }
-
-        const rstFunc = () => {
-            this.timer.reset();
-            this.timer.pause();
-            document.getElementById('test').innerText = `${this.timer.getTimeValues().toString(['minutes', 'seconds'])}`;
-        }
-
-        this.timer.addEventListener('secondsUpdated', tmrInit)
-
-        startBtn.addEventListener('click', strtFunc)
-
-        pauseBtn.addEventListener('click', psFunc)
-
-        resetBtn.addEventListener('click', rstFunc)
-
-        this.timer.addEventListener('targetAchieved', () => {
-            this.timer.removeEventListener('secondsUpdated', tmrInit)
-            startBtn.removeEventListener('click', strtFunc);
-            pauseBtn.removeEventListener('click', psFunc);
-            resetBtn.removeEventListener('click', rstFunc);
-        }, { once: true })
-
-
+    setupButtonListeners() {
+        this.playBtn.addEventListener('click', () => this.currentTimer.start());
+        this.pauseBtn.addEventListener('click', () => this.currentTimer.pause());
+        this.resetBtn.addEventListener('click', () => {
+            this.currentTimer.reset();
+            this.currentTimer.pause();
+            this.updateDisplay();
+        });
     }
 
-    startPomodoro() {
-        this.startTimer(25);
+    init() {
+        this.updateDisplay();
     }
 }
-
-
 function pomodoroMain() {
-    const pomo = new Pomodoro();
-    pomo.startPomodoro();
+    const pomo = new Pomodoro(0.25);
+    pomo.init();
 }
 
-pomodoroMain();
+pomodoroMain()
 
