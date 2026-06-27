@@ -84,7 +84,7 @@
 }
 /* invisible header */
 
-.blackscreen-h2, .blackscreem-p {
-    color: white;
+.blackscreen-text {
+    color: black;
     text-align: center;
 }
