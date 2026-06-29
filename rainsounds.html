@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="Wv1QFTLDWkXZ71y0p7xhXqQ4LeI7kAP7suoYmD3AWUk" />
+    <meta name="yandex-verification" content="90e56048145f8c91" />
+    <meta name="description" content="A Black Screen Webpage With Rain Sounds" />
+    <link rel="stylesheet" href="./styles/stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="icon" href="./assets/blkscreen.png">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <title>Black Screen</title>
+    <script defer type="module" src="./src/rainsounds.js"></script>
+  </head>
+  <body>
+    <div id="rain-header-trigger">
+        <header id="rainsounds-header" class="hidden">
+            <h1 id="rainsounds-h1" class="unselectable">Black Screen - Rain Sounds</h1>
+            <nav id="rainsounds-nav" class="unselectable navbar justify-content-center">
+                <a class="instruction" href="./index.html">Home</a>
+                <a class="instruction" href="#">Rain Sounds</a>
+            </nav>
+        </header>
+    </div>
+    <main class="blackscreen-main rainsounds">
+        <h2 class="blackscreen-h2 unselectable blackscreen-text rainsounds">Welcome to Black Screen (with rain sounds!)</h2>
+        <p class="blackscreen-p unselectable blackscreen-text rainsounds">This is the second black screen webpage with rain sounds 
+            added in. Everyone loves to hear the sound of rain pelting the earth, so I decided to add in this version of this black screen webpage.
+             I thought this would be a good chance to deploy a website that we
+        can all enjoy. I plan to make updates every now and then (adding my github link, adding linkedin, etc.), but for now... Have fun with the site I created!
+        </p>
+        <div class="play-container">
+            <button type="button" id="rain-player">
+                <img id="play-button" src="./assets/play.png" alt="A play button" height="50" width="50"/>
+            </button>
+        </div>
+    </main>
+  </body>
+</html>
