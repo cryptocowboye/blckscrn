@@ -49,7 +49,7 @@ function rainFullScreen() {
 
 function playAudio() {
     const pBtn = document.querySelector("#rain-player");
-    const rain = new Audio('./assets/rain.mp3');
+    const rain = new Audio('assets/rain.mp3');
     rain.loop = true;
     rain.volume = 0.5;
 
