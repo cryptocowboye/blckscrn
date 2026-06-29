@@ -1,2 +1,8 @@
 /assets/rain.mp3
     Content-Type: audio/mpeg
+
+/assets/pause.png
+    Content-Type: image/png
+
+/assets/play.png
+    Content-Type: image/png
