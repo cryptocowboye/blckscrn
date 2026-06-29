@@ -1,3 +1,5 @@
+import sound from '/rain.mp3'
+
 function rainNavBarFunctionality() {
     const rainTrig = document.querySelector('#rain-header-trigger');
     const rainHeader = document.querySelector('#rainsounds-header');
@@ -49,20 +51,20 @@ function rainFullScreen() {
 
 function playAudio() {
     const pBtn = document.querySelector("#rain-player");
-    const rain = new Audio('public/rain.mp3');
+    const rain = new Audio(sound);
     rain.loop = true;
     rain.volume = 0.5;
 
     pBtn.addEventListener('click', () => {
         if (rain.paused) {
             rain.play();
-            pBtn.querySelector("#play-button").src = './public/pause.png';
+            pBtn.querySelector("#play-button").src = '/pause.png';
             if (pBtn.id === 'rain-player') {
                 pBtn.id = 'rain-player-new'
             }
         } else {
             rain.pause();
-            pBtn.querySelector('#play-button').src = './public/play.png';
+            pBtn.querySelector('#play-button').src = '/play.png';
         }
     })
 }
